@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>OCMS – Contact</title>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-container">
+      <span class="logo">OCMS</span>
+      <nav class="nav-menu">
+        <a href="index.html">Home</a>
+        <a href="courses.html">Courses</a>
+        <a href="instructor.html">Instructors</a>
+        <a href="student.html">Dashboard</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <div class="header-cta">
+        <a href="student.html" class="btn btn-primary">Contact</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <section class="page-hero">
+      <div class="container">
+        <h1>Get in Touch</h1>
+        <p>We’re here to help – drop us a line.</p>
+      </div>
+    </section>
+
+    <form id="contactForm">
+      <label for="name">Full Name</label>
+      <input id="name" type="text" required />
+      <label for="email">Email Address</label>
+      <input id="email" type="email" required />
+      <label for="message">Your Message</label>
+      <textarea id="message" rows="5" required></textarea>
+      <button type="submit" class="btn btn-primary">Send Message</button>
+      <p id="form-response" style="margin-top:1rem;"></p>
+    </form>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-container">
+      <div>&copy; 2025 OCMS</div>
+      <div class="footer-links"><a href="#">Privacy</a><a href="#">Terms</a></div>
+      <div class="footer-social">
+        <a href="#"><span>FB</span></a><a href="#"><span>TW</span></a><a href="#"><span>IG</span></a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("contactForm").addEventListener("submit", e => {
+      e.preventDefault();
+      document.getElementById("form-response").innerText = "Thanks! We received your message.";
+      e.target.reset();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>OCMS – Dashboard</title>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-container">
+      <span class="logo">OCMS</span>
+      <nav class="nav-menu">
+        <a href="index.html">Home</a>
+        <a href="courses.html">Courses</a>
+        <a href="instructor.html">Instructors</a>
+        <a href="student.html">Dashboard</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <div class="header-cta">
+        <a href="student.html" class="btn btn-primary">My Account</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <section class="page-hero">
+      <div class="container">
+        <h1>Your Dashboard</h1>
+        <p>Track progress, manage your profile, and more.</p>
+      </div>
+    </section>
+
+    <div class="storage-box">
+      <h2>Session Storage</h2>
+      <button class="btn btn-primary" onclick="saveSession()">Save Session</button>
+      <button class="btn btn-secondary" onclick="loadSession()">Load Session</button>
+      <p id="session-output"></p>
+    </div>
+
+    <section class="container table-responsive">
+      <table>
+        <thead><tr><th>Course</th><th>Status</th><th>Progress</th><th>Grade</th></tr></thead>
+        <tbody>
+          <tr><td>Full Stack Web Dev</td><td>Active</td><td>60%</td><td>B+</td></tr>
+          <tr><td>UI/UX Design</td><td>Complete</td><td>100%</td><td>A</td></tr>
+          <tr><td>Agile PM</td><td>Active</td><td>40%</td><td>-</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <div class="storage-box" id="map">
+      <h2>Your Location</h2>
+      <iframe id="google_map" src="https://maps.google.co.in?output=embed"></iframe>
+      <button class="btn btn-primary" onclick="getLocation()">Detect My Location</button>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-container">
+      <div>&copy; 2025 OCMS</div>
+      <div class="footer-links"><a href="#">Privacy</a><a href="#">Terms</a></div>
+      <div class="footer-social">
+        <a href="#"><span>FB</span></a><a href="#"><span>TW</span></a><a href="#"><span>IG</span></a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function saveSession() {
+      sessionStorage.setItem("studentName","Alex Johnson");
+      sessionStorage.setItem("theme","dark");
+      document.getElementById("session-output").innerText = "Session saved.";
+    }
+    function loadSession() {
+      const name = sessionStorage.getItem("studentName")||"Not Set";
+      const theme = sessionStorage.getItem("theme")||"Not Set";
+      document.getElementById("session-output").innerHTML = `<strong>Name:</strong> ${name}<br><strong>Theme:</strong> ${theme}`;
+    }
+    function getLocation() {
+      navigator.geolocation.getCurrentPosition(p => {
+        const coords = `${p.coords.latitude},${p.coords.longitude}`;
+        document.getElementById("google_map").src = 'https://maps.google.co.in?q='+coords+'&z=16&output=embed';
+      });
+    }
+  </script>
+</body>
+</html>
